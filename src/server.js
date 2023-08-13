@@ -7,14 +7,7 @@ const cors = require('cors');
 const fs = require('fs');
 const data = require('../register65.json');
 
-const corsOptions = {
-  origin: '*', // You can specify domains here if you want to limit the origins
-  methods: 'GET,OPTIONS,PATCH,DELETE,POST,PUT',
-  allowedHeaders: 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version',
-  credentials: true
-};
-
-app.use(cors(corsOptions));
+app.use(cors());
 
 app.get('/', (req, res) => {
   res.send('Welcome to backend server')
