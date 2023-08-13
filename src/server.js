@@ -4,6 +4,8 @@ const app = express();
 const port = process.env.PORT || 5000;
 const db = require('./db.js');
 const cors = require('cors');
+const fs = require('fs');
+const data = require('../register65.json');
 
 app.use(cors());
 app.get('/', (req, res) => {
@@ -22,6 +24,17 @@ app.get('/api/student/:id', async (req, res) => {
   }
 });
 
+app.get('/api/data/:id', async (req, res) => {
+  const id = req.params.id;
+  const item = data.find(item => item.id.toString() === id);
+  if (item) {
+    res.json(item);
+  } else {
+    res.status(404).json({ message: 'User not found' });
+  }
+});
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
+
