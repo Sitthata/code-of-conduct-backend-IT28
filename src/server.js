@@ -7,8 +7,6 @@ const cors = require('cors');
 const fs = require('fs');
 const data = require('../register65.json');
 
-app.use(cors());
-
 app.get('/', (req, res) => {
   res.send('Welcome to backend server')
 });
